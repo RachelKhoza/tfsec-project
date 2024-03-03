@@ -9,17 +9,15 @@ on:
 jobs:
   build:
     name: Build
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
 
       - name: Setup tfsec
-        run: |
-          wget https://github.com/tfsec/tfsec/releases/latest/download/tfsec-linux-amd64 -O tfsec
-          chmod +x tfsec
-          sudo mv tfsec /usr/local/bin/
+        run: wget https://github.com/tfsec/tfsec/releases/latest/download/tfsec-linux-amd64 -O tfsec && chmod +x tfsec
+        
 
       - name: Run tfsec
-        run: tfsec .
+        run: ./tfsec --force-all-dirs
