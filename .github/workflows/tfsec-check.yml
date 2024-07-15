@@ -1,0 +1,23 @@
+name: build
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Setup tfsec
+        run: wget https://github.com/tfsec/tfsec/releases/latest/download/tfsec-linux-amd64 -O tfsec && chmod +x tfsec
+        
+
+      - name: Run tfsec
+        run: ./tfsec --force-all-dirs
