@@ -1,5 +1,5 @@
 resource "aws_s3_bucket" "mybuck_ray" {
-    bucket = "raytest_buck12321221"
+    bucket = "raytest_buck12321"
 }
 
 resource "aws_s3_bucket_ownership_controls" "bucket_acl"{
